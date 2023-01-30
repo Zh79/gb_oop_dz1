@@ -1,22 +1,32 @@
 import java.util.ArrayList;
 
-public class Persona {
+public class Persona extends Human {
 
-    String name;
+    public Library PersLibr;
+    public Pet PersPet;
+
+
     int gender;  // 0 ж 1 м
     int spouse; // 0 n 1 y
     String mother;
     String father;
     int hasChild;   // 0 n 1 y
 
-    public Persona(String name, int gender, int spouse, String mother, String father, int hasChild){
-        this.name=name;
-        this.gender=gender;
+    public Persona(String name, String sex, int age, int spouse, String mother, String father, int hasChild, String persLibr, String persPet){
+        SetName(name);
+        SetSex(sex);
+        SetAge(age);
         this.spouse=spouse;
         this.mother=mother;
         this.father=father;
         this.hasChild=hasChild;
+        this.PersLibr = new Library(persLibr);
+        this.PersPet = new Pet(persPet);
     }
+
+    
+
+
     public static String info(Persona p){
         String lineInfo = "";
         if (p.spouse == 1){
@@ -52,6 +62,12 @@ public class Persona {
 
     public ArrayList<Persona> getListName(){
         return list;
+    }
+    @Override
+    public void Voice() {
+        String name = GetName();
+        System.out.println("Hello, my name " + name);
+        
     }
     
 }
